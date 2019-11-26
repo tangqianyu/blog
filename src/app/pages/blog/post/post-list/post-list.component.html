@@ -3,42 +3,47 @@
   <div class="post-list">
     <div class="post-item" *ngFor="let item of posts">
       <div class="post-title">
-        <span class="post-title-link">EditText 搜索优化 | 安卓 offer 收割基</span>
+        <span class="post-title-link">{{item.title}}</span>
       </div>
 
-      <div class="post-meta" nz-row nzType="flex" nzJustify="center">
+      <div class="post-meta" nz-row nzType="flex" nzJustify="center" nzAlign="middle">
 
         <div class="post-time" nz-col>
           <div nz-row nzGutter="8">
-            <span class="post-meta-item-icon" nz-col>
+            <span nz-col>
               <i nz-icon nzType="calendar" nzTheme="outline"></i>
             </span>
             <span class="post-meta-item-text" nz-col>发表于</span>
-            <span nz-col>2019-09-06</span>
+            <span nz-col>{{item.date}}</span>
           </div>
         </div>
         <nz-divider nzType="vertical"></nz-divider>
 
         <div class="post-category" nz-col>
           <div nz-row nzGutter="8">
-            <span class="post-meta-item-icon" nz-col>
+            <span nz-col>
               <i nz-icon nzType="folder" nzTheme="outline"></i>
             </span>
             <span class="post-meta-item-text" nz-col>分类于</span>
-            <span class="post-category-item-text">安卓 offer 收割基</span>
-            <span>，</span>
-            <span class="post-category-item-text">Android</span>
+
+            <!-- [innerHTML]="item.tagsTemplate" -->
+            <div nz-col>
+              <span class="post-category-item-text">Java</span>
+              <span>,</span>
+              <span class="post-category-item-text">Android</span>
+            </div>
+
           </div>
         </div>
         <nz-divider nzType="vertical"></nz-divider>
 
         <div class="post-visitors" nz-col>
           <div nz-row nzGutter="8">
-            <span class="post-meta-item-icon">
+            <span nz-col>
               <i nz-icon nzType="eye" nzTheme="outline"></i>
             </span>
             <span class="post-meta-item-text" nz-col>阅读次数:</span>
-            <span nz-col>1380</span>
+            <span nz-col>{{item.visitors}}</span>
           </div>
 
         </div>
@@ -60,7 +65,7 @@
       </div>
 
       <div class="post-button g-flex-center">
-        <span class="g-flex-center">阅读全文 »</span>
+        <span class="g-flex-center" (click)="readMore(item)">阅读全文 »</span>
       </div>
     </div>
   </div>

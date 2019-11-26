@@ -8,20 +8,49 @@ import { Component, OnInit } from '@angular/core';
 export class PostListComponent implements OnInit {
   posts = [
     {
-      title: ''
+      title: 'EditText 搜索优化 | 安卓 offer 收割基',
+      date: '2019-09-06',
+      tags: ['安卓 offer 收割基', 'Android'],
+      visitors: '1380'
     },
     {
-      title: ''
+      title: 'EditText 搜索优化 | 安卓 offer 收割基',
+      date: '2019-09-06',
+      tags: ['安卓 offer 收割基', 'Android'],
+      visitors: '1000'
     },
     {
-      title: ''
+      title: 'EditText 搜索优化 | 安卓 offer 收割基',
+      date: '2019-09-06',
+      tags: ['安卓 offer 收割基', 'Android'],
+      visitors: '1200'
     },
   ]
-  
+
 
   constructor() { }
 
   ngOnInit() {
+    this.posts.forEach(item => {
+      let tagsTemplate = ''
+      item.tags.forEach((tag, index) => {
+        if (index != item.tags.length - 1) {
+          tagsTemplate += `
+          <span class="post-category-item-text" nz-col>${tag}</span>
+          <span nz-col>,</span>
+          `
+        } else {
+          tagsTemplate += `
+          <span class="post-category-item-text" nz-col>${tag}</span>`
+        }
+        Object.assign(item,{tagsTemplate})
+      })
+    })
+  }
+
+  readMore(val) {
+    console.log(val);
+
   }
 
 }

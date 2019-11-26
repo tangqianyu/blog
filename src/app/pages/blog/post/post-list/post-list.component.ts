@@ -36,14 +36,14 @@ export class PostListComponent implements OnInit {
       item.tags.forEach((tag, index) => {
         if (index != item.tags.length - 1) {
           tagsTemplate += `
-          <span class="post-category-item-text" nz-col>${tag}</span>
-          <span nz-col>,</span>
+          <span class="post-category-item-text">${tag}</span>
+          <span>,&nbsp;&nbsp;&nbsp;</span>
           `
         } else {
           tagsTemplate += `
-          <span class="post-category-item-text" nz-col>${tag}</span>`
+          <span class="post-category-item-text">${tag}</span>`
         }
-        Object.assign(item,{tagsTemplate})
+        Object.assign(item, { tagsTemplate })
       })
     })
   }

@@ -19,20 +19,18 @@
         </div>
         <nz-divider nzType="vertical"></nz-divider>
 
+
         <div class="post-category" nz-col>
-          <div nz-row nzGutter="8">
+          <div nz-row nzGutter="8" nzType="flex">
             <span nz-col>
               <i nz-icon nzType="folder" nzTheme="outline"></i>
             </span>
             <span class="post-meta-item-text" nz-col>分类于</span>
 
-            <!-- [innerHTML]="item.tagsTemplate" -->
             <div nz-col>
-              <span class="post-category-item-text">Java</span>
-              <span>,</span>
-              <span class="post-category-item-text">Android</span>
+              <div nz-row nzGutter="8" [innerHTML]="item.tagsTemplate"></div>
             </div>
-
+            
           </div>
         </div>
         <nz-divider nzType="vertical"></nz-divider>

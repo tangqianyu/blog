@@ -1,0 +1,32 @@
+<nz-layout class="layout">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'" [nzCollapsedWidth]="0"
+    [nzZeroTrigger]="zeroTrigger">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <ng-container *ngFor="let item of menus">
+        <li nz-menu-item nzMatchRouter [routerLink]="[item.link]">
+          <i nz-icon [nzType]="item.icon"></i>
+          <span>{{item.text}}</span>
+        </li>
+      </ng-container>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer>
+      <div nz-row nzGutter="8">
+        <span nz-col><i nz-icon nzType="copyright" nzTheme="outline"></i></span>
+        <span nz-col>2019</span>
+        <span nz-col><i nz-icon nzType="user" nzTheme="outline"></i></span>
+        <span nz-col>tqy</span>
+      </div>
+    </nz-footer>
+  </nz-layout>
+</nz-layout>
+<ng-template #zeroTrigger>
+  <i nz-icon nzType="menu-fold" nzTheme="outline"></i>
+</ng-template>

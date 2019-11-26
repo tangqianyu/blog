@@ -8,6 +8,10 @@ import { CategoryComponent } from './category/category.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { TagsComponent } from './tags/tags.component';
+import { ArchivesComponent } from './archives/archives.component';
+import { OpenSourceComponent } from './open-source/open-source.component';
+import { ToolsComponent } from './tools/tools.component';
+import { RewardComponent } from './reward/reward.component';
 
 const routes: Routes = [
   {
@@ -44,6 +48,38 @@ const routes: Routes = [
         data: {
           title: '标签'
         }
+      },
+
+      {
+        path: 'archives',
+        component: ArchivesComponent,
+        data: {
+          title: '归档'
+        }
+      },
+
+      {
+        path: 'open_source',
+        component: OpenSourceComponent,
+        data: {
+          title: '我的开源库'
+        }
+      },
+
+      {
+        path: 'tools',
+        component: ToolsComponent,
+        data: {
+          title: '我的工具库'
+        }
+      },
+
+      {
+        path:'reward',
+        component:RewardComponent,
+        data:{
+          title:'打赏博主'
+        }
       }
 
     ]
@@ -61,6 +97,10 @@ const routes: Routes = [
     AboutComponent,
     CategoryComponent,
     TagsComponent,
+    ArchivesComponent,
+    OpenSourceComponent,
+    ToolsComponent,
+    RewardComponent,
     PostListComponent,
     PostDetailComponent,
 

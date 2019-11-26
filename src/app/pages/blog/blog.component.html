@@ -1,7 +1,9 @@
 <nz-layout class="layout">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'" [nzCollapsedWidth]="0"
     [nzZeroTrigger]="zeroTrigger">
-    <div class="logo"></div>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="">
+    </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
       <ng-container *ngFor="let item of menus">
         <li nz-menu-item nzMatchRouter [routerLink]="[item.link]">

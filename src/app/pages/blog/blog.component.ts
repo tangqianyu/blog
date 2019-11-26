@@ -29,6 +29,26 @@ export class BlogComponent implements OnInit {
       link: '/blog/tags',
       icon: 'tags'
     },
+    {
+      text: '归档',
+      link: '/blog/archives',
+      icon: 'database'
+    },
+    {
+      text: '我的开源库',
+      link: '/blog/open_source',
+      icon: 'github'
+    },
+    {
+      text: '我的工具库',
+      link: '/blog/tools',
+      icon: 'tool'
+    },
+    {
+      text:'打赏博主',
+      link:'/blog/reward',
+      icon:'red-envelope'
+    }
   ];
 
 

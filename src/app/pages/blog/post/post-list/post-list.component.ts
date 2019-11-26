@@ -17,6 +17,7 @@ export class PostListComponent implements OnInit {
       title: ''
     },
   ]
+  
 
   constructor() { }
 

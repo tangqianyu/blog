@@ -12,6 +12,7 @@ import { ArchivesComponent } from './archives/archives.component';
 import { OpenSourceComponent } from './open-source/open-source.component';
 import { ToolsComponent } from './tools/tools.component';
 import { RewardComponent } from './reward/reward.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 const routes: Routes = [
   {
@@ -75,10 +76,10 @@ const routes: Routes = [
       },
 
       {
-        path:'reward',
-        component:RewardComponent,
-        data:{
-          title:'打赏博主'
+        path: 'reward',
+        component: RewardComponent,
+        data: {
+          title: '打赏博主'
         }
       }
 
@@ -89,6 +90,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
+    MarkdownModule.forChild(),
     SharedModule
   ],
   declarations: [

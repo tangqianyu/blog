@@ -1,4 +1,4 @@
-<div class="post">
+<div class="post" *ngIf="posts.length!==0">
 
   <div class="post-list">
     <div class="post-item" *ngFor="let item of posts">
@@ -19,18 +19,13 @@
         </div>
         <nz-divider nzType="vertical"></nz-divider>
 
-
         <div class="post-category" nz-col>
           <div nz-row nzGutter="8" nzType="flex">
             <span nz-col>
               <i nz-icon nzType="folder" nzTheme="outline"></i>
             </span>
             <span class="post-meta-item-text" nz-col>分类于</span>
-
-            <div nz-col>
-              <div nz-row nzGutter="8" [innerHTML]="item.tagsTemplate"></div>
-            </div>
-            
+            <div nz-col [innerHTML]="item.tagsTemplate"></div>
           </div>
         </div>
         <nz-divider nzType="vertical"></nz-divider>
@@ -48,18 +43,8 @@
       </div>
 
       <div class="post-body">
-        <h2>描述</h2>
-        <p>设计一个 EditText 的文本监听器，停止输入 1s 后，如果文本发生变化则触发监听器。</p>
-        <p>
-          例子：
-          <br>
-          文本内容是 111，111 -> 1111 -> 11111，连续输入都小于 1s，在输完后的 1s 触发监听器为 11111；
-          <br>
-          文本内容是 111，111 -> 1111 -> 111，连续输入都小于 1s，在输完后的 1s 不触发监听器；
-        </p>
-        <p>
-          类似微信的客户端搜索，不同的是微信在 111 -> 1111 -> 111 是会触发改变的。
-        </p>
+        <markdown [data]="item.content |interceptString:'line':10">
+        </markdown>
       </div>
 
       <div class="post-button g-flex-center">
@@ -72,8 +57,8 @@
     <nz-pagination [nzPageIndex]="2" [nzTotal]="50" nzShowQuickJumper></nz-pagination>
   </div>
 
+</div>
 
-  <!-- <ng-container *ngIf="posts.length==0">
-    <nz-empty></nz-empty>
-  </ng-container> -->
+<div class="empty-container" *ngIf="posts.length==0">
+  <nz-empty></nz-empty>
 </div>

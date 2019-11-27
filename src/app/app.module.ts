@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {  NZ_I18N, zh_CN } from 'ng-zorro-antd';
-
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
@@ -18,6 +17,7 @@ registerLocaleData(zh);
     AppComponent
   ],
   imports: [
+    MarkdownModule.forRoot(),
     SharedModule,
     BrowserModule,
     AppRoutingModule,

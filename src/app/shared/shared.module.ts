@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IconsProviderModule } from '../icons-provider.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
+import { InterceptStringPipe } from './pipes/intercept-string.pipe';
 
 
 @NgModule({
@@ -13,13 +14,15 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   declarations: [
-
+    InterceptStringPipe
   ],
   exports: [
     IconsProviderModule,
     NgZorroAntdModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+
+    InterceptStringPipe
   ]
 })
 export class SharedModule { }

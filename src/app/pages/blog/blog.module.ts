@@ -13,6 +13,7 @@ import { OpenSourceComponent } from './open-source/open-source.component';
 import { ToolsComponent } from './tools/tools.component';
 import { RewardComponent } from './reward/reward.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { TagCloudModule } from 'angular-tag-cloud-module';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
         data: {
           title: '首页'
         }
+      },
+
+      {
+        path: 'post/:id',
+        component: PostDetailComponent
       },
 
       {
@@ -91,7 +97,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     MarkdownModule.forChild(),
-    SharedModule
+    SharedModule,
+    TagCloudModule,
   ],
   declarations: [
     BlogComponent,

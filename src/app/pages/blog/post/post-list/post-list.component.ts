@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'qy-blog-post-list',
@@ -7,6 +8,7 @@ import { Post } from '../post';
   styleUrls: ['./post-list.component.less']
 })
 export class PostListComponent implements OnInit {
+
   posts: Post[] = [
     {
       id: 1,
@@ -60,7 +62,9 @@ export class PostListComponent implements OnInit {
   ]
 
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.posts.forEach((item: Post) => {
@@ -80,8 +84,8 @@ export class PostListComponent implements OnInit {
     })
   }
 
-  readMore(val) {
-
+  readMore(id: number) {
+    this.router.navigate(['/blog/post', id])
   }
 
 }

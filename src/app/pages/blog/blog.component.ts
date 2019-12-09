@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'qy-blog',
@@ -45,14 +45,15 @@ export class BlogComponent implements OnInit {
       icon: 'tool'
     },
     {
-      text:'打赏博主',
-      link:'/blog/reward',
-      icon:'red-envelope'
+      text: '打赏博主',
+      link: '/blog/reward',
+      icon: 'red-envelope'
     }
   ];
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

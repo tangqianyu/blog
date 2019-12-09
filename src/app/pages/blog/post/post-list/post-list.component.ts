@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Post } from '../post';
+import {Component, OnInit} from '@angular/core';
+import {Post} from '../post';
 
 @Component({
   selector: 'qy-blog-post-list',
@@ -60,24 +60,21 @@ export class PostListComponent implements OnInit {
   ]
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.posts.forEach((item: Post) => {
-      let tagsTemplate = ''
+      let tagsTemplate = ``;
       item.tags.forEach((tag, index) => {
-        if (index != item.tags.length - 1) {
-          tagsTemplate += `
-          <span class="post-category-item-text">${tag}</span>
-          <span>,&nbsp;&nbsp;&nbsp;</span>
-          `
+        if (index !== item.tags.length - 1) {
+          tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
         } else {
-          tagsTemplate += `
-          <span class="post-category-item-text">${tag}</span>`
+          tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
         }
-        Object.assign(item, { tagsTemplate })
-      })
-    })
+        Object.assign(item, {tagsTemplate});
+      });
+    });
   }
 
   readMore(val) {

@@ -33,7 +33,6 @@ export class TagsComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data);
-
   }
 
 }

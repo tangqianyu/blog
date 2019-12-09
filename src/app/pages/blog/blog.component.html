@@ -1,7 +1,7 @@
 <nz-layout class="layout">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzBreakpoint]="'lg'" [nzCollapsedWidth]="0"
-    [nzZeroTrigger]="zeroTrigger">
-    <div class="logo">
+            [nzZeroTrigger]="zeroTrigger">
+    <div class="logo" (click)="handleLogoClick()">
       <img src="assets/images/logo.png" alt="">
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">

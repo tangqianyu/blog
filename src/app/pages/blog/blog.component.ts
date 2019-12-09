@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'qy-blog',
@@ -52,10 +53,16 @@ export class BlogComponent implements OnInit {
   ];
 
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
+  }
+
+  handleLogoClick() {
+    this.router.navigate(['/blog/home']);
   }
 
 }

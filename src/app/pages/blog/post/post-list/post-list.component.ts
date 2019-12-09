@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../post';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'qy-blog-post-list',
@@ -7,6 +8,7 @@ import {Post} from '../post';
   styleUrls: ['./post-list.component.less']
 })
 export class PostListComponent implements OnInit {
+
   posts: Post[] = [
     {
       id: 1,
@@ -57,15 +59,17 @@ export class PostListComponent implements OnInit {
       visitors: 1200,
       content: ''
     },
-  ]
+  ];
 
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
     this.posts.forEach((item: Post) => {
-      let tagsTemplate = ``;
+      let tagsTemplate = '';
       item.tags.forEach((tag, index) => {
         if (index !== item.tags.length - 1) {
           tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
@@ -77,8 +81,8 @@ export class PostListComponent implements OnInit {
     });
   }
 
-  readMore(val) {
-
+  readMore(id: number) {
+    this.router.navigate(['/blog/post', id]);
   }
 
 }

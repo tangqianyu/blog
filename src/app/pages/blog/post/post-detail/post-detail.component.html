@@ -1,3 +1,42 @@
-<p>
-  post-detail works!
-</p>
+<div class="post-detail">
+  <div class="post-title">{{post.title}}</div>
+  <div class="post-meta" nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+
+    <div class="post-time" nz-col>
+      <div nz-row nzGutter="8">
+        <span nz-col>
+          <i nz-icon nzType="calendar" nzTheme="outline"></i>
+        </span>
+        <span class="post-meta-item-text" nz-col>发表于</span>
+        <span nz-col>{{post.date}}</span>
+      </div>
+    </div>
+    <nz-divider nzType="vertical"></nz-divider>
+
+    <div class="post-category" nz-col>
+      <div nz-row nzGutter="8" nzType="flex">
+        <span nz-col>
+          <i nz-icon nzType="folder" nzTheme="outline"></i>
+        </span>
+        <span class="post-meta-item-text" nz-col>分类于</span>
+        <div nz-col [innerHTML]="post.tagsTemplate"></div>
+      </div>
+    </div>
+    <nz-divider nzType="vertical"></nz-divider>
+
+    <div class="post-visitors" nz-col>
+      <div nz-row nzGutter="8">
+        <span nz-col>
+          <i nz-icon nzType="eye" nzTheme="outline"></i>
+        </span>
+        <span class="post-meta-item-text" nz-col>阅读次数:</span>
+        <span nz-col>{{post.visitors}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-body">
+    <markdown [data]="post.content">
+    </markdown>
+  </div>
+</div>

@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconsProviderModule } from '../icons-provider.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterceptStringPipe } from './pipes/intercept-string.pipe';
+
+// region your componets & directives & pipes
+const COMPONENTS = [];
+const DIRECTIVES = [];
+const PIPES = [InterceptStringPipe];
 
 
 @NgModule({
@@ -12,17 +17,23 @@ import { InterceptStringPipe } from './pipes/intercept-string.pipe';
     IconsProviderModule,
     NgZorroAntdModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
-    InterceptStringPipe
+    ...COMPONENTS,
+    ...DIRECTIVES,
+    ...PIPES
   ],
   exports: [
     IconsProviderModule,
     NgZorroAntdModule,
     FormsModule,
     CommonModule,
+    ReactiveFormsModule,
 
-    InterceptStringPipe
+    ...COMPONENTS,
+    ...DIRECTIVES,
+    ...PIPES
   ]
 })
 export class SharedModule { }

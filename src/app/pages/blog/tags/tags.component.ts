@@ -3,7 +3,7 @@ import {CloudData, CloudOptions} from 'angular-tag-cloud-module';
 import {randomNumber, randomColor} from 'src/app/utils/random.util';
 
 @Component({
-  selector: 'qy-blog-tags',
+  selector: 'blog-tags',
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.less']
 })
@@ -33,7 +33,7 @@ export class TagsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data);
+
   }
 
 }

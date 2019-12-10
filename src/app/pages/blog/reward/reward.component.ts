@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'qy-blog-reward',
+  selector: 'blog-reward',
   templateUrl: './reward.component.html',
   styleUrls: ['./reward.component.less']
 })

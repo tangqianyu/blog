@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post';
+import { Post } from '../../../../types/post';
 
 @Component({
-  selector: 'qy-blog-post-detail',
+  selector: 'blog-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.less']
 })
@@ -46,19 +46,15 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    let tagsTemplate = ''
+    let tagsTemplate = ``;
     this.post.tags.forEach((tag, index) => {
       if (index != this.post.tags.length - 1) {
-        tagsTemplate += `
-        <span class="post-category-item-text">${tag}</span>
-        <span>,&nbsp;&nbsp;&nbsp;</span>
-        `
+        tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
       } else {
-        tagsTemplate += `
-        <span class="post-category-item-text">${tag}</span>`
+        tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
       }
     })
-    Object.assign(this.post, { tagsTemplate })
+    Object.assign(this.post, { tagsTemplate });
   }
 
 }

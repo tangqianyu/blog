@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Post} from '../post';
+import {Post} from '../../../../types/post';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'qy-blog-post-list',
+  selector: 'blog-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.less']
 })

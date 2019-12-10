@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'qy-blog-about',
+  selector: 'blog-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.less']
 })

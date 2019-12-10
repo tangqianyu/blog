@@ -26,7 +26,7 @@
       <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         (click)="handleTriggerClick()"></i>
       <ul class="qy-nav g-flex-h-center">
-        <li class="g-flex-center">
+        <li class="g-flex-center hide-mobile">
           <header-user></header-user>
         </li>
       </ul>
@@ -37,6 +37,13 @@
         <router-outlet></router-outlet>
       </div>
     </nz-content>
-    <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
+    <nz-footer>
+      <div nz-row nzGutter="8">
+        <span nz-col><i nz-icon nzType="copyright" nzTheme="outline"></i></span>
+        <span nz-col>2019</span>
+        <span nz-col><i nz-icon nzType="user" nzTheme="outline"></i></span>
+        <span nz-col>tqy</span>
+      </div>
+    </nz-footer>
   </nz-layout>
 </nz-layout>

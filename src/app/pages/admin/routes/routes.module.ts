@@ -6,11 +6,11 @@ import { UserSettingComponent } from './user-setting/user-setting.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'user'
+    redirectTo: 'user_setting'
   },
 
   {
-    path: 'user',
+    path: 'user_setting',
     component: UserSettingComponent,
     data: {
       title: '个人设置'

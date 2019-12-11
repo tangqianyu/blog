@@ -4,16 +4,15 @@
 </div>
 <nz-dropdown-menu #userMenu="nzDropdownMenu">
   <div nz-menu>
-    <div nz-menu-item routerLink="">
+    <div nz-menu-item routerLink="/admin/user_center">
       <i nz-icon nzType="user"></i>
       <span>个人中心</span>
     </div>
-    <div nz-menu-item routerLink="">
+    <div nz-menu-item routerLink="/admin/user_setting">
       <i nz-icon nzType="setting"></i>
       <span>个人设置</span>
     </div>
-    <li nz-menu-divider></li>
-    <div nz-menu-item>
+    <div nz-menu-item (click)="logout()">
       <i nz-icon nzType="logout"></i>
       <span>退出登录</span>
     </div>

@@ -12,4 +12,7 @@ export class HeaderUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout() {
+
+  }
 }

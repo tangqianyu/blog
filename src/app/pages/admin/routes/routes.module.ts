@@ -1,12 +1,33 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
-import { UserSettingComponent } from './user-setting/user-setting.component';
+import { UserSettingComponent } from './user/user-setting/user-setting.component';
+import { UserCenterComponent } from './user/user-center/user-center.component';
+import { SystemMenuComponent } from './system/system-menu/system-menu.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { ModelFormComponent } from './components/model-form/model-form.component';
+import { PostListComponent } from './post/post-list/post-list.component';
+import { PostWriteComponent } from './post/post-write/post-write.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'user_setting'
+    redirectTo: 'post_list'
+  },
+
+  {
+    path: 'post_list',
+    component: PostListComponent,
+    data: {
+      title: '文章列表'
+    }
+  },
+  {
+    path: 'post_write',
+    component: PostWriteComponent,
+    data: {
+      title: '写文章'
+    }
   },
 
   {
@@ -16,6 +37,22 @@ const routes: Routes = [
       title: '个人设置'
     }
   },
+
+  {
+    path: 'user_center',
+    component: UserCenterComponent,
+    data: {
+      title: '个人中心'
+    }
+  },
+
+  {
+    path: 'system_menu',
+    component: SystemMenuComponent,
+    data: {
+      title: '系统目录'
+    }
+  }
 ]
 
 
@@ -25,7 +62,17 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   declarations: [
-    UserSettingComponent
+    PageHeaderComponent,
+    ModelFormComponent,
+
+    PostListComponent,
+    PostWriteComponent,
+    UserSettingComponent,
+    UserCenterComponent,
+    SystemMenuComponent
+  ],
+  entryComponents: [
+    ModelFormComponent
   ]
 })
 export class RoutesModule { }

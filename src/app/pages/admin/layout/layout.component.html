@@ -2,23 +2,21 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" #sider>
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzTitle="User" nzIcon="user">
-        <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-      </li>
-      <li nz-submenu nzTitle="Team" nzIcon="team">
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
-        </ul>
-      </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file"></i>
-        <span>File</span>
-      </li>
+      <ng-container *ngFor="let menu of menus">
+        <li nz-submenu nzOpen [nzTitle]="menu.text" [nzIcon]="menu.icon" *ngIf="menu.children">
+          <ul>
+            <li nz-menu-item *ngFor="let subMenu of menu.children" nzMatchRouter [routerLink]="subMenu.link">
+              {{ subMenu.text }}
+            </li>
+          </ul>
+        </li>
+
+        <li nz-menu-item *ngIf="!menu.children" nzMatchRouter [routerLink]="menu.link">
+          <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+          <span>{{ menu.text }}</span>
+        </li>
+      </ng-container>
+
     </ul>
   </nz-sider>
   <nz-layout>
@@ -32,7 +30,6 @@
       </ul>
     </nz-header>
     <nz-content>
-      <page-header></page-header>
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>

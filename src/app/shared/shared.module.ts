@@ -4,11 +4,12 @@ import { IconsProviderModule } from '../icons-provider.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterceptStringPipe } from './pipes/intercept-string.pipe';
+import { DictionaryPipe } from './pipes/dictionary.pipe';
 
 // region your componets & directives & pipes
 const COMPONENTS = [];
 const DIRECTIVES = [];
-const PIPES = [InterceptStringPipe];
+const PIPES = [InterceptStringPipe,DictionaryPipe];
 
 
 @NgModule({

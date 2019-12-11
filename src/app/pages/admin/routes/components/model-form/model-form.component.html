@@ -1,0 +1,30 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item *ngFor="let item of form">
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzRequired]="item.required" [nzFor]="item.label">{{item.label}}
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="请输入您的{{item.label}}!">
+      <nz-input-group>
+        <ng-container [ngSwitch]="item.type">
+
+          <input *ngSwitchCase="'text'" [type]="item.type" nz-input [formControlName]="item.key"
+            [placeholder]="item.label" />
+
+          <input *ngSwitchCase="'password'" [type]="item.type" nz-input [formControlName]="item.key"
+            [placeholder]="item.label" />
+
+          <textarea *ngSwitchCase="'textarea'" rows="4" nz-input [formControlName]="item.key"></textarea>
+
+          <nz-radio-group *ngSwitchCase="'radio'" [formControlName]="item.key">
+            <label *ngFor="let option of item.options" nz-radio [nzValue]="option.value">{{ option.label }}</label>
+          </nz-radio-group>
+
+        </ng-container>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="cancel()">取消</button>
+  <button nz-button nzType="primary" (click)="confirm()">确定</button>
+</div>

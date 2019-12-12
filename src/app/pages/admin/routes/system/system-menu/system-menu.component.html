@@ -31,7 +31,7 @@
         <nz-form-item>
           <nz-form-label nzFor="status">使用状态</nz-form-label>
           <nz-form-control>
-            <nz-select [nzPlaceHolder]="'请选择'" nzId="status" [nzShowSearch]="true">
+            <nz-select [nzPlaceHolder]="'请选择'" nzId="status">
               <nz-option [nzLabel]="'启用'" [nzValue]="0"></nz-option>
               <nz-option [nzLabel]="'禁用'" [nzValue]="1"></nz-option>
             </nz-select>
@@ -52,13 +52,14 @@
   </button>
 
 
-  <nz-table #table [nzData]="menus" style="margin-top:20px ;">
+  <nz-table #table [nzData]="menus" style="margin-top:20px ;" [nzScroll]="{ x: '500px' }">
     <thead>
       <tr>
-        <th>菜单编号</th>
-        <th>显示名称</th>
-        <th>图标</th>
-        <th>状态</th>
+        <th nzWidth="100px">菜单编号</th>
+        <th nzWidth="100px">显示名称</th>
+        <th nzWidth="100px">图标</th>
+        <th nzWidth="100px">状态</th>
+        <th nzWidth="150px" nzRight="0px">操作</th>
       </tr>
     </thead>
     <tbody>
@@ -73,12 +74,17 @@
               {{ item.id }}
             </td>
             <td>{{ item.text }}</td>
-            <td>{{ item.icon }}</td>
+            <td>{{ item.icon | empty }}</td>
             <td>
               <span>
                 <nz-badge [nzStatus]="item.status==0?'success':'error'"></nz-badge>
               </span>
               <span>{{ item.status | dictionary:'menuStatus'}}</span>
+            </td>
+            <td nzRight="0px">
+              <a>编辑</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a>删除</a>
             </td>
           </tr>
         </ng-container>

@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Post} from '../../../../types/post';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../../../../types/post';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'blog-post-list',
@@ -49,7 +50,7 @@ export class PostListComponent implements OnInit {
       date: '2019-09-06',
       tags: ['安卓 offer 收割基', 'Android'],
       visitors: 1000,
-      content: ''
+      content: '## 测试'
     },
     {
       id: 3,
@@ -57,13 +58,14 @@ export class PostListComponent implements OnInit {
       date: '2019-09-06',
       tags: ['安卓 offer 收割基', 'Android'],
       visitors: 1200,
-      content: ''
+      content: '## 测试'
     },
   ];
 
 
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
   }
 
@@ -76,9 +78,18 @@ export class PostListComponent implements OnInit {
         } else {
           tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
         }
-        Object.assign(item, {tagsTemplate});
+        Object.assign(item, { tagsTemplate });
       });
     });
+
+    this.http.post('http://192.168.5.46:5000/user/login', {
+      account: 'admin',
+      password: 'i_am_admin_'
+    }).subscribe(res => {
+      console.log(res);
+    })
+    // this.http.get('http://192.168.5.46:5000/post').subscribe()
+
   }
 
   readMore(id: number) {

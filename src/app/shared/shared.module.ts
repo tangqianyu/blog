@@ -5,11 +5,16 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterceptStringPipe } from './pipes/intercept-string.pipe';
 import { DictionaryPipe } from './pipes/dictionary.pipe';
+import { EmptyPipe } from './pipes/empty.pipe';
 
 // region your componets & directives & pipes
 const COMPONENTS = [];
 const DIRECTIVES = [];
-const PIPES = [InterceptStringPipe,DictionaryPipe];
+const PIPES = [
+  InterceptStringPipe,
+  DictionaryPipe,
+  EmptyPipe
+];
 
 
 @NgModule({

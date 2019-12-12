@@ -21,6 +21,11 @@ const routes: Routes = [
     component: BlogComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'home'
+      },
+
+      {
         path: 'home',
         component: HomeComponent,
         data: {

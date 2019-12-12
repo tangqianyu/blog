@@ -13,6 +13,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
 import { NzNotificationService, NzMessageService } from 'ng-zorro-antd';
 import { AppSetting } from './app.setting';
+import * as qs from 'querystring'
 
 
 const CODEMESSAGE = {
@@ -108,12 +109,19 @@ export class DefaultInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀
     let url = req.url;
+    let body = req.body
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = AppSetting.baseUrl + url;
     }
 
+    //格式化请求数据
+    if (req.method === 'POST') {
+      body = qs.stringify(body)
+    }
+
     const newReq = req.clone({
       url,
+      body,
       setHeaders: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
     return next.handle(newReq).pipe(

@@ -1,7 +1,7 @@
 export interface Post {
   [key: string]: any;
 
-  id: number;
+  id?: number;
   title: string;
   date: string;
   tags: string[];

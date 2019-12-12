@@ -82,13 +82,13 @@ export class PostListComponent implements OnInit {
       });
     });
 
-    this.http.post('http://192.168.5.46:5000/user/login', {
-      account: 'admin',
-      password: 'i_am_admin_'
-    }).subscribe(res => {
-      console.log(res);
-    })
-    // this.http.get('http://192.168.5.46:5000/post').subscribe()
+    // this.http.post('/user/login', {
+    //   account: 'admin',
+    //   password: 'i_am_admin_!'
+    // }).subscribe(res => {
+    //   console.log(res);
+    // })
+    // this.http.get('http://192.168.101.106:5000/post').subscribe()
 
   }
 

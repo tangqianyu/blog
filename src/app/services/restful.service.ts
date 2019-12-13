@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../types/user';
 import { Post } from '../types/post';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,12 @@ export class RestfulService {
     return this.http.post('/post', data)
   }
 
-  getPostList() {
-    return this.http.get('/post')
+  getPostList(): Observable<Post[]> {
+    return this.http.get<Post[]>('/post/all')
   }
 
-  getPost(id: number) {
-    return this.http.get(`/post/${id}`)
+  getPost(id: number):Observable<Post> {
+    return this.http.get<Post>(`/post/${id}`)
   }
 
   removePost(id: number) {

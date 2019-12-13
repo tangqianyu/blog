@@ -1,5 +1,5 @@
 <div class="post-detail">
-  <div class="post-title">{{post.title}}</div>
+  <div class="post-title">{{post?.title}}</div>
   <div class="post-meta" nz-row nzType="flex" nzJustify="center" nzAlign="middle">
 
     <div class="post-time" nz-col>
@@ -8,7 +8,7 @@
           <i nz-icon nzType="calendar" nzTheme="outline"></i>
         </span>
         <span class="post-meta-item-text" nz-col>发表于</span>
-        <span nz-col>{{post.date}}</span>
+        <span nz-col>{{post?.date |date:'yyyy-MM-dd HH:mm:ss'}}</span>
       </div>
     </div>
     <nz-divider nzType="vertical"></nz-divider>
@@ -19,7 +19,7 @@
           <i nz-icon nzType="folder" nzTheme="outline"></i>
         </span>
         <span class="post-meta-item-text" nz-col>分类于</span>
-        <div nz-col [innerHTML]="post.tagsTemplate"></div>
+        <div nz-col [innerHTML]="post?.tagsTemplate"></div>
       </div>
     </div>
     <nz-divider nzType="vertical"></nz-divider>
@@ -30,13 +30,13 @@
           <i nz-icon nzType="eye" nzTheme="outline"></i>
         </span>
         <span class="post-meta-item-text" nz-col>阅读次数:</span>
-        <span nz-col>{{post.visitors}}</span>
+        <span nz-col>{{post?.visitors}}</span>
       </div>
     </div>
   </div>
 
   <div class="post-body">
-    <markdown [data]="post.content">
+    <markdown [data]="post?.content">
     </markdown>
   </div>
 </div>

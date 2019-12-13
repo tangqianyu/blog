@@ -64,15 +64,13 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   private handleData(ev: HttpResponseBase): Observable<any> {
-    console.log('ev===', ev);
 
     this.checkStatus(ev);
     // 业务处理：一些通用操作
     switch (ev.status) {
       case 200:
-
-        if (event instanceof HttpResponse) {
-          const body: any = event.body;
+        if (ev instanceof HttpResponse) {
+          const body: any = ev.body;
           if (body && body.code !== 200) {
             this.message.error(`${body.message}`);
             // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
@@ -84,9 +82,7 @@ export class DefaultInterceptor implements HttpInterceptor {
               this.message.success(`${body.message}`)
               return
             }
-
             return of(new HttpResponse(Object.assign(event, { body: body.data })));
-            // 或者依然保持完整的格式
           }
         }
         break;

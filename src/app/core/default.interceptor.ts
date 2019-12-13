@@ -111,7 +111,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     }
 
     //格式化请求数据
-    if (req.method === 'POST') {
+    if (req.method === ('POST' || 'PUT')) {
       body = qs.stringify(body)
     }
 

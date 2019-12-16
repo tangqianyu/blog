@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -14,6 +14,7 @@ import { mergeMap, catchError } from 'rxjs/operators';
 import { NzNotificationService, NzMessageService } from 'ng-zorro-antd';
 import { AppSetting } from './app.setting';
 import * as qs from 'querystring'
+import { getUrlParam } from '../utils/url.util';
 
 
 const CODEMESSAGE = {
@@ -39,7 +40,11 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector) { }
+  constructor(
+    private injector: Injector,
+  ) {
+
+  }
 
   private get message(): NzMessageService {
     return this.injector.get(NzMessageService);
@@ -55,7 +60,7 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   private checkStatus(ev: HttpResponseBase) {
-    if ((ev.status >= 200 && ev.status < 300) || ev.status === 401) {
+    if ((ev.status >= 200 && ev.status < 300) || ev.status === 401 || ev.status === 406 || !ev.status) {
       return;
     }
 
@@ -65,6 +70,7 @@ export class DefaultInterceptor implements HttpInterceptor {
 
   private handleData(ev: HttpResponseBase): Observable<any> {
 
+
     this.checkStatus(ev);
     // 业务处理：一些通用操作
     switch (ev.status) {
@@ -72,6 +78,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         if (ev instanceof HttpResponse) {
           const body: any = ev.body;
           if (body && body.code !== 200) {
+
             this.message.error(`${body.message}`);
             // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
             // this.http.get('/').subscribe() 并不会触发
@@ -90,8 +97,13 @@ export class DefaultInterceptor implements HttpInterceptor {
         this.message.error(`未登录或登录已过期，请重新登录。`);
         // 清空 token 信息
         localStorage.removeItem('token')
+
+        /* 存当前页面路径 */
+        localStorage.setItem('path', location.pathname)
+
         this.goTo('/admin/login');
         break;
+
       default:
         if (ev instanceof HttpErrorResponse) {
           console.warn('未可知错误，大部分是由于后端不支持CORS或无效配置引起', ev);
@@ -115,10 +127,21 @@ export class DefaultInterceptor implements HttpInterceptor {
       body = qs.stringify(body)
     }
 
+
+    //设置header
+    let header: any = { 'Content-Type': 'application/x-www-form-urlencoded' }
+    let token = localStorage.getItem('token')
+    if (!getUrlParam(url, '_allow_anonymous')) {
+      header = {
+        ...header,
+        'Authorization': `Bearer ${token}`
+      }
+    }
+
     const newReq = req.clone({
       url,
       body,
-      setHeaders: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      setHeaders: header
     });
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../../../../types/post';
 import { ActivatedRoute } from '@angular/router';
 import { RestfulService } from 'src/app/services/restful.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'blog-post-detail',
@@ -15,16 +16,17 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private rest: RestfulService
+    private rest: RestfulService,
+    private title: Title
   ) { }
 
   ngOnInit() {
 
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
-
+ 
     this.rest.getPost(this.id).subscribe((res: Post) => {
       this.post = res;
+      this.title.setTitle(this.post.title)
       let tagsTemplate = ``;
       this.post.tags.forEach((tag, index) => {
         if (index !== this.post.tags.length - 1) {

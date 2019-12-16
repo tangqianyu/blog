@@ -14,7 +14,7 @@ export class RestfulService {
   ) { }
 
   login(data: User) {
-    return this.http.post('/user/login', data)
+    return this.http.post('/user/login?_allow_anonymous=true', data)
   }
 
   createPost(data: Post) {
@@ -22,11 +22,15 @@ export class RestfulService {
   }
 
   getPostList(): Observable<Post[]> {
-    return this.http.get<Post[]>('/post/all')
+    return this.http.get<Post[]>('/post/all?_allow_anonymous=true')
   }
 
-  getPost(id: number):Observable<Post> {
-    return this.http.get<Post>(`/post/${id}`)
+  getAdminPostList(): Observable<Post[]> {
+    return this.http.get<Post[]>('/post')
+  }
+
+  getPost(id: number): Observable<Post> {
+    return this.http.get<Post>(`/post/${id}?_allow_anonymous=true`)
   }
 
   removePost(id: number) {

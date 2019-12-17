@@ -23,18 +23,18 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
 
     this.id = this.route.snapshot.params.id;
- 
+
     this.rest.getPost(this.id).subscribe((res: Post) => {
       this.post = res;
       this.title.setTitle(this.post.title)
-      let tagsTemplate = ``;
-      this.post.tags.forEach((tag, index) => {
-        if (index !== this.post.tags.length - 1) {
-          tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
+      let categoriesTemplate = ``;
+      this.post.tags.forEach((category, index) => {
+        if (index !== this.post.categories.length - 1) {
+          categoriesTemplate += `<span class="post-category-item-text">${category}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
         } else {
-          tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
+          categoriesTemplate += `<span class="post-category-item-text">${category}</span>`;
         }
-        Object.assign(this.post, { tagsTemplate });
+        Object.assign(this.post, { categoriesTemplate });
       });
     }
     )

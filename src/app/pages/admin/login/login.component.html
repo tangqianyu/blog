@@ -1,5 +1,5 @@
 <div class="login-container g-flex-center">
-  <nz-card nzTitle="管理后台登录"  class="login-form">
+  <nz-card nzTitle="管理后台登录" class="login-form">
     <form nz-form [formGroup]="form" (ngSubmit)="submit()" role="form">
       <nz-form-item>
         <nz-form-control nzErrorTip="请输入您的用户名！">
@@ -16,7 +16,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <button nz-button type="submit" nzType="primary" nzSize="large" nzBlock>
+        <button nz-button [nzLoading]="rest.loading" type="submit" nzType="primary" nzSize="large" nzBlock>
           登录
         </button>
       </nz-form-item>

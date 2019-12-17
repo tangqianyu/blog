@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup
 
+
   constructor(
     fb: FormBuilder,
     private rest: RestfulService,
@@ -19,7 +20,6 @@ export class LoginComponent implements OnInit {
     this.form = fb.group({
       account: [null, Validators.required],
       password: [null, Validators.required],
-
     });
   }
 
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     }
     if (!flag) return;
 
+
     /* 拿到参数 */
     let data: any = {};
     for (let key in this.form.controls) {
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.rest.login(data).subscribe((res: string) => {
-            
+      console.log('loading', this.rest.loading);
       localStorage.setItem('token', res)
       this.router.navigate([localStorage.getItem('path') || 'admin'])
     })

@@ -24,15 +24,15 @@ export class PostListComponent implements OnInit {
       this.posts = res
 
       this.posts.forEach((item: Post) => {
-        let tagsTemplate = ``;
+        let categoriesTemplate = ``;
 
-        item.tags.forEach((tag, index) => {
-          if (index !== item.tags.length - 1) {
-            tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
+        item.categories.forEach((category: string, index: number) => {
+          if (index !== item.categories.length - 1) {
+            categoriesTemplate += `<span class="post-category-item-text">${category}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
           } else {
-            tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
+            categoriesTemplate += `<span class="post-category-item-text">${category}</span>`;
           }
-          Object.assign(item, { tagsTemplate });
+          Object.assign(item, { categoriesTemplate });
         });
       });
     })

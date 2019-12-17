@@ -44,8 +44,12 @@ export class LayoutComponent implements OnInit, AfterViewInit {
       icon: 'setting',
       children: [
         {
-          text: '系统菜单',
+          text: '系统目录',
           link: 'system_menu'
+        },
+        {
+          text: '博客目录',
+          link: 'blog_menu'
         }
       ]
     }

@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import {Component, OnInit} from '@angular/core';
-import {Post} from '../../../../types/post';
-import {ActivatedRoute} from '@angular/router';
-import {RestfulService} from 'src/app/services/restful.service';
-=======
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../../../types/post';
 import { ActivatedRoute } from '@angular/router';
 import { RestfulService } from 'src/app/services/restful.service';
 import { Title } from '@angular/platform-browser';
->>>>>>> acc38570edb737d7c0d9f227691e5dbee107552c
 
 @Component({
   selector: 'blog-post-detail',

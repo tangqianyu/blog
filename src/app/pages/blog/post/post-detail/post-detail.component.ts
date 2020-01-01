@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../../../../types/post';
 import {ActivatedRoute} from '@angular/router';
 import {RestfulService} from 'src/app/services/restful.service';
+=======
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../../../../types/post';
+import { ActivatedRoute } from '@angular/router';
+import { RestfulService } from 'src/app/services/restful.service';
+import { Title } from '@angular/platform-browser';
+>>>>>>> acc38570edb737d7c0d9f227691e5dbee107552c
 
 @Component({
   selector: 'blog-post-detail',
@@ -15,27 +23,28 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private rest: RestfulService
-  ) {
-  }
+    private rest: RestfulService,
+    private title: Title
+  ) { }
 
   ngOnInit() {
 
-    // this.id = this.route.snapshot.params.id;
+    this.id = this.route.snapshot.params.id;
 
-    // this.rest.getPost(this.id).subscribe((res: Post) => {
-    //   this.post = res;
-    //   let tagsTemplate = ``;
-    //   this.post.tags.forEach((tag, index) => {
-    //     if (index !== this.post.tags.length - 1) {
-    //       tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
-    //     } else {
-    //       tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
-    //     }
-    //     Object.assign(this.post, { tagsTemplate });
-    //   });
-    // }
-    // )
+    this.rest.getPost(this.id).subscribe((res: Post) => {
+      this.post = res;
+      this.title.setTitle(this.post.title)
+      let categoriesTemplate = ``;
+      this.post.tags.forEach((category, index) => {
+        if (index !== this.post.categories.length - 1) {
+          categoriesTemplate += `<span class="post-category-item-text">${category}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
+        } else {
+          categoriesTemplate += `<span class="post-category-item-text">${category}</span>`;
+        }
+        Object.assign(this.post, { categoriesTemplate });
+      });
+    }
+    )
 
   }
 

@@ -20,22 +20,22 @@ export class PostListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.rest.getPostList().subscribe((res: Post[]) => {
-    //   console.log(res);
-    //   this.posts = res
+    this.rest.getPostList().subscribe((res: Post[]) => {
+      this.posts = res
 
-    //   this.posts.forEach((item: Post) => {
-    //     let tagsTemplate = ``;
-    //     item.tags.forEach((tag, index) => {
-    //       if (index !== item.tags.length - 1) {
-    //         tagsTemplate += `<span class="post-category-item-text">${tag}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
-    //       } else {
-    //         tagsTemplate += `<span class="post-category-item-text">${tag}</span>`;
-    //       }
-    //       Object.assign(item, { tagsTemplate });
-    //     });
-    //   });
-    // })
+      this.posts.forEach((item: Post) => {
+        let categoriesTemplate = ``;
+
+        item.categories.forEach((category: string, index: number) => {
+          if (index !== item.categories.length - 1) {
+            categoriesTemplate += `<span class="post-category-item-text">${category}</span><span>,&nbsp;&nbsp;&nbsp;</span>`;
+          } else {
+            categoriesTemplate += `<span class="post-category-item-text">${category}</span>`;
+          }
+          Object.assign(item, { categoriesTemplate });
+        });
+      });
+    })
 
   }
 

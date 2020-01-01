@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {User} from '../types/user';
-import {Post} from '../types/post';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { User } from '../types/user';
+import { Post } from '../types/post';
+import { Observable } from 'rxjs';
+import { _HttpClient } from './http-client.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,15 @@ import {Observable} from 'rxjs';
 export class RestfulService {
 
   constructor(
-    private http: HttpClient
-  ) {
+    private http: _HttpClient,
+  ) { }
+
+  get loading(): boolean {
+    return this.http.loading;
   }
 
   login(data: User) {
-    return this.http.post('/user/login', data);
+    return this.http.post('/user/login?_allow_anonymous=true', data);
   }
 
   createPost(data: Post) {

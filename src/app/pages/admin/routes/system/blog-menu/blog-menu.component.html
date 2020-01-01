@@ -52,7 +52,7 @@
   </button>
 
 
-  <nz-table #table [nzData]="menus" style="margin-top:20px ;" [nzScroll]="{ x: '550px' }">
+  <nz-table #table [nzData]="menus" style="margin-top:20px" [nzScroll]="{ x: '550px' }">
     <thead>
       <tr>
         <th nzWidth="100px">菜单编号</th>
@@ -63,32 +63,17 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let data of table.data">
-        <ng-container *ngFor="let item of mapOfExpandedData[data.id]">
-          <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
-            <td
-              [nzIndentSize]="item.level * 20"
-              [nzShowExpand]="!!item.children"
-              [(nzExpand)]="item.expand"
-              (nzExpandChange)="collapse(mapOfExpandedData[data.id], item, $event)">
-              {{ item.id }}
-            </td>
-            <td>{{ item.text }}</td>
-            <td>{{ item.icon | empty }}</td>
-            <td>
-              <span>
-                <nz-badge [nzStatus]="item.status==0?'success':'error'"></nz-badge>
-              </span>
-              <span>{{ item.status | dictionary:'menuStatus'}}</span>
-            </td>
-            <td nzRight="0px">
-              <a>编辑</a>
-              <nz-divider nzType="vertical"></nz-divider>
-              <a>删除</a>
-            </td>
-          </tr>
-        </ng-container>
-      </ng-container>
+      <tr *ngFor="let data of table.data">
+        <td>{{ data.menuId }}</td>
+        <td>{{ data.text }}</td>
+        <td>{{ data.icon }}</td>
+        <td>{{ data.status }}</td>
+        <td nzRight="0px">
+          <a (click)="edit(data)">编辑</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="delete(data.menuId)">删除</a>
+        </td>
+      </tr>
     </tbody>
   </nz-table>
 

@@ -8,6 +8,7 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { ModelFormComponent } from './components/model-form/model-form.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostWriteComponent } from './post/post-write/post-write.component';
+import { BlogMenuComponent } from './system/blog-menu/blog-menu.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,14 @@ const routes: Routes = [
     data: {
       title: '系统目录'
     }
+  },
+
+  {
+    path: 'blog_menu',
+    component: BlogMenuComponent,
+    data: {
+      title: '博客目录'
+    }
   }
 ]
 
@@ -69,7 +78,8 @@ const routes: Routes = [
     PostWriteComponent,
     UserSettingComponent,
     UserCenterComponent,
-    SystemMenuComponent
+    SystemMenuComponent,
+    BlogMenuComponent
   ],
   entryComponents: [
     ModelFormComponent
